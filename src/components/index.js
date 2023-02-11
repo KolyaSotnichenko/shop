@@ -4,6 +4,7 @@ import Detail from './Detail'
 import Footer from './Footer'
 import Header from './Header'
 import NavBar from './NavBar'
+import Order from './Order'
 import ProductCard from './ProductCard'
 import ProductList from './ProductList'
 import SignIn from './SignIn'
@@ -16,6 +17,7 @@ export {
     Footer,
     Header,
     NavBar,
+    Order,
     ProductCard,
     ProductList,
     SignIn,

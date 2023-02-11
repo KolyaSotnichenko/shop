@@ -2,21 +2,23 @@ import React from 'react'
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import Typography from '@mui/material/Typography';
-import { Button, CardActionArea, CardActions } from '@mui/material';
+import { Delete } from '@mui/icons-material'
+import { Box, CardActionArea, CardActions } from '@mui/material';
 import { Link } from 'react-router-dom';
 import { LazyLoadImage } from 'react-lazy-load-image-component';
 
-const ProductCard = ({item, addItem}) => {
-
-
-    return (
-        <Card sx={{ maxWidth: 250, flex: 1}}>
+const Order = ({item, onDelete}) => {
+  return (
+    <Card sx={{ maxWidth: '100%', display: 'flex', justifyContent: 'space-between', pl: '10px'}}>
             <Link style={{textDecoration: 'none', color: 'black'}} to={`/product/${item.id}`} state={item} >
-                <CardActionArea>
+                <CardActionArea
+                    sx={{
+                        display: 'flex',
+                    }}
+                >
                     <LazyLoadImage 
                         src={item.image}
-                        height='250px'
-                        width="100%"
+                        height='50px'
                         effect={blur}
                         style={{
                             objectFit: 'contain'
@@ -40,12 +42,24 @@ const ProductCard = ({item, addItem}) => {
                 </CardActionArea>
             </Link>
             <CardActions>
-                <Button size="medium" color="primary" onClick={() => addItem(item)}>
-                    Купити
-                </Button>
+                <Box
+                    onClick={() => onDelete(item.id)}
+                >
+                    <Delete
+                        sx={{
+                            transition: 'all 0.2s ease-in-out',
+                            cursor: 'pointer',
+                            color: '#222',
+                            '&:hover': {
+                                color: 'lightgray',
+                                transform: 'scale(1.3)'
+                            },
+                        }}
+                    />
+                </Box>
             </CardActions>
         </Card>
-    )
+  )
 }
 
-export default ProductCard
+export default Order

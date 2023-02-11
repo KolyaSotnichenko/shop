@@ -9,6 +9,7 @@ function App() {
 
   const [products, setProducts] = useState([])
   const [currentProducts, setCurrentProducts] = useState(products)
+  const [orders, setOrders] = useState([])
 
   useEffect(() => {
     getProducts()
@@ -32,14 +33,29 @@ function App() {
     )
   }
 
+  const deleteOrder = (id) => {
+    setOrders(orders.filter(order => order.id !== id))
+  }
+
+  const addToOrders = (item) => {
+
+    let isInArray = false
+
+    orders.forEach(order => {
+      if(order.id === item.id) isInArray = true
+    })
+
+    if(!isInArray) setOrders([...orders, item])
+  }
+
   return (
     <Container maxWidth="lg" sx={{margin: '50px auto'}}>
-      <Header />
+      <Header orders={orders} onDelete={deleteOrder} />
       <Box
         component="main"
       >
         <Categories chooseCategory={chooseCategory} />
-        <ProductList products={currentProducts} />
+        <ProductList products={currentProducts} addItem={addToOrders} />
       </Box>
       <Footer />
     </Container>

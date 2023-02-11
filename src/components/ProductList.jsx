@@ -4,7 +4,7 @@ import ProductCard from './ProductCard'
 
 const ProductList = (props) => {
 
-    const { products } = props
+    const { products, addItem } = props
 
     const handleInputChange = (e) => {
         setQuantity(e.target.value)
@@ -20,7 +20,7 @@ const ProductList = (props) => {
             }}
         >
             {products && products.map((item, index) => (
-                <ProductCard key={index} item={item} />
+                <ProductCard key={index} item={item} addItem={addItem} />
             ))}
         </Box>
     </>

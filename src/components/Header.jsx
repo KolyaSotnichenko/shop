@@ -4,9 +4,17 @@ import { LazyLoadImage } from 'react-lazy-load-image-component'
 import bannerImg from '/assets/banner.jpg'
 import NavBar from './NavBar'
 
-const Header = () => {
+const Header = (props) => { 
+
+  const { orders, onDelete } = props
+
   return (
-    <header>
+    <Box
+      component='header'
+      sx={{
+        position: 'relative'
+      }}
+    >
       <Box
         sx={{
           display: 'flex',
@@ -22,7 +30,7 @@ const Header = () => {
             fontSize: '20px'
           }}
         >Test Shop</Box>
-        <NavBar />
+        <NavBar orders={orders} onDelete={onDelete} />
       </Box>
       <Box
         sx={{
@@ -40,7 +48,7 @@ const Header = () => {
           alt="Banner image"
         />
       </Box>
-    </header>
+    </Box>
   )
 }
 
