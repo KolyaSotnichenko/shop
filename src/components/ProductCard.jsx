@@ -24,7 +24,7 @@ const ProductCard = ({item}) => {
                         alt="green iguana"
                     /> */}
                     <LazyLoadImage 
-                        src={item.colors[0].images[0]}
+                        src={item.image}
                         height='250px'
                         width="100%"
                         effect={blur}
@@ -44,7 +44,7 @@ const ProductCard = ({item}) => {
                             gutterBottom 
                             variant="h6"
                         >
-                            {`${item.colors[0].price}$`}
+                            {`${item.price}$`}
                         </Typography>
                     </CardContent>
                     <CardActions>

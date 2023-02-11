@@ -8,8 +8,6 @@ const Detail = () => {
     const location = useLocation()
     const item = location.state
 
-    console.log(item)
-
   return (
     <Container maxWidth="md" sx={{paddingTop: '50px'}}>
         <Box
@@ -23,7 +21,7 @@ const Detail = () => {
           <Box>
             <LazyLoadImage 
               height="400px"
-              src={item.colors[0].images[0]}
+              src={item.image}
               effect={blur}
               alt="Product"
             />
@@ -57,7 +55,7 @@ const Detail = () => {
               <Typography
                 variant='h5'
               >
-                {item.colors[0].description}
+                {item.description}
               </Typography>
             </Box>
             <Box
@@ -68,7 +66,7 @@ const Detail = () => {
               <Typography
                 variant='h4'
               >
-                {`${item.colors[0].price}$`}
+                {`${item.price}$`}
               </Typography>
             </Box>
             <Box

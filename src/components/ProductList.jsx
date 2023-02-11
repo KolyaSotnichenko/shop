@@ -1,31 +1,29 @@
+import { FormControl, MenuItem, Select, Typography } from '@mui/material'
 import { Box } from '@mui/system'
-import React, { useEffect, useState } from 'react'
-import { getProducts } from '../services/api'
 import ProductCard from './ProductCard'
 
-const ProductList = () => {
+const ProductList = (props) => {
 
-    const [products, setProducts] = useState([])
+    const { products } = props
 
-    useEffect(() => {
-        getProducts()
-            .then(data => {
-                setProducts(data)
-            })
-    }, [products])
+    const handleInputChange = (e) => {
+        setQuantity(e.target.value)
+    }
 
   return (
-    <Box
-        sx={{
-            display: 'flex',
-            flexWrap: 'wrap',
-            gap: '20px'
-        }}
-    >
-        {products.map((item, index) => (
-            <ProductCard key={index} item={item} />
-        ))}
-    </Box>
+    <>
+        <Box
+            sx={{
+                display: 'flex',
+                flexWrap: 'wrap',
+                gap: '20px'
+            }}
+        >
+            {products && products.map((item, index) => (
+                <ProductCard key={index} item={item} />
+            ))}
+        </Box>
+    </>
   )
 }
 

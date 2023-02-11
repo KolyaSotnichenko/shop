@@ -1,4 +1,5 @@
 import Cabinet from './Cabinet'
+import Categories from './Categories'
 import Detail from './Detail'
 import Footer from './Footer'
 import Header from './Header'
@@ -10,6 +11,7 @@ import SignUp from './SignUp'
 
 export {
     Cabinet,
+    Categories,
     Detail,
     Footer,
     Header,
