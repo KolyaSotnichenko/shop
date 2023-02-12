@@ -2,6 +2,7 @@ import Banner from './Banner'
 import Cabinet from './Cabinet'
 import Categories from './Categories'
 import Detail from './Detail'
+import Filter from './Filter'
 import Footer from './Footer'
 import Header from './Header'
 import Layout from './Layout'
@@ -15,6 +16,7 @@ export {
     Cabinet,
     Categories,
     Detail,
+    Filter,
     Footer,
     Header,
     Layout,
