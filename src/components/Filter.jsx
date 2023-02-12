@@ -6,6 +6,8 @@ const Filter = (props) => {
 
     const {chooseFilter} = props
 
+    const [selectedFilter, setSelectedFilter] = useState('all')
+
     const [filters, setFilters] = useState([
         {
             key: 'all',
@@ -25,6 +27,9 @@ const Filter = (props) => {
         },
     ])
 
+    const active = {color: 'green'}
+    const inactive ={}
+
   return (
     <Box
         component='ul'
@@ -41,11 +46,15 @@ const Filter = (props) => {
                 key={filter.key}
                 sx={{
                     cursor: 'pointer',
+                    color: selectedFilter == filter.key ? active : inactive,
                     '&:hover': {
                         color: 'red',
                     }
                 }}
-                onClick={() => chooseFilter(filter.key)}
+                onClick={() => {
+                    setSelectedFilter(filter.key)
+                    chooseFilter(filter.key)
+                }}
             >
                 <Typography>
                     {filter.name}

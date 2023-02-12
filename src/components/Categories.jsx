@@ -6,6 +6,8 @@ const Categories = (props) => {
 
     const {chooseCategory} = props
 
+    const [selectedCategory, setSelectedCategory] = useState('all')
+
     const [categories, setCategories] = useState([
         {
             key: 'all',
@@ -25,6 +27,9 @@ const Categories = (props) => {
         },
     ])
 
+    const active = {color: 'green'}
+    const inactive ={}
+
   return (
     <Box
         component='ul'
@@ -35,17 +40,21 @@ const Categories = (props) => {
             mb: '30px'
         }}
     >
-        {categories.map(category => (
+        {categories.map((category, index) => (
             <Box 
-                component='li' 
+                component='li'
                 key={category.key}
                 sx={{
                     cursor: 'pointer',
+                    color: selectedCategory == category.key ? active : inactive,
                     '&:hover': {
                         color: 'red',
                     }
                 }}
-                onClick={() => chooseCategory(category.key)}
+                onClick={() => {
+                    setSelectedCategory(category.key)
+                    chooseCategory(category.key)
+                }}
             >
                 <Typography>
                     {category.name}

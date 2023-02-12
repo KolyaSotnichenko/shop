@@ -9,7 +9,9 @@ import { LazyLoadImage } from 'react-lazy-load-image-component';
 import { useDispatch } from 'react-redux';
 import { removeOrder } from '../store/orderSlice';
 
-const Order = ({item}) => {
+const Order = (props) => {
+
+    const { item } = props
 
     const dispatch = useDispatch()
 
