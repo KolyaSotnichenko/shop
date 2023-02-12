@@ -9,8 +9,6 @@ import NavBar from './NavBar'
 import Order from './Order'
 import ProductCard from './ProductCard'
 import ProductList from './ProductList'
-import SignIn from './SignIn'
-import SignUp from './SignUp'
 
 export {
     Banner,
@@ -24,6 +22,4 @@ export {
     Order,
     ProductCard,
     ProductList,
-    SignIn,
-    SignUp
 }

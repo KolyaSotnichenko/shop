@@ -1,4 +1,6 @@
-import firebase from 'firebase'
+import firebase from 'firebase/app'
+import 'firebase/firestore';
+import 'firebase/auth'
 
 let _usersDb = null;
 
@@ -10,16 +12,14 @@ class Firebase {
       projectId: 'shop-9cd65',
     });
 
-    // initialize Firestore through Firebase
     _usersDb = firebase.firestore();
 
-    // disable deprecated features
     _usersDb.settings({
       timestampsInSnapshots: true
     });
   }
 
-  async addUser(user) {
+  async addUser() {
     const createdAt = new Date();
     const name = firebase.auth().currentUser.displayName;
     const email = firebase.auth().currentUser.email;
@@ -55,4 +55,4 @@ class Firebase {
   }
 }
 
-const firebaseClient = new Firebase();
+export const firebaseClient = new Firebase();

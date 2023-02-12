@@ -1,6 +1,6 @@
 const express = require('express');
 const cors = require('cors');
-const jwt = require('express-jwt');
+var   { expressjwt: jwt } = require('express-jwt');
 const jwks = require('jwks-rsa');
 const firebaseAdmin = require('firebase-admin');
 const path = require('path');
@@ -18,10 +18,10 @@ const jwtCheck = jwt({
   }),
   audience: process.env.AUTH0_API_AUDIENCE,
   issuer: `https://${process.env.AUTH0_DOMAIN}/`,
-  algorithm: 'RS256'
+  algorithms: ['RS256']
 });
 
-const serviceAccount = require('./firebase/firebase-key');
+const serviceAccount = require('./firebase/firebase-key.json');
 
 firebaseAdmin.initializeApp({
   credential: firebaseAdmin.credential.cert(serviceAccount),

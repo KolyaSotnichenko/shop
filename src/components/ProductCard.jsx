@@ -7,6 +7,7 @@ import { Link } from 'react-router-dom';
 import { LazyLoadImage } from 'react-lazy-load-image-component';
 import { useDispatch } from 'react-redux';
 import { addOrder } from '../store/orderSlice';
+import { auth0Client } from '../services/auth0';
 
 const ProductCard = ({item}) => {
 
@@ -47,7 +48,13 @@ const ProductCard = ({item}) => {
                 </CardActionArea>
             </Link>
             <CardActions>
-                <Button size="medium" color="primary" onClick={() => addToOrders(item)}>
+                <Button size="medium" color="primary" onClick={() => {
+                    if(auth0Client.getProfile()){
+                        return addToOrders(item)
+                    }else{
+                        console.log("Not Auth")
+                    }
+                }}>
                     Купити
                 </Button>
             </CardActions>

@@ -2,9 +2,9 @@ import { Paper, Typography } from '@mui/material'
 import { Box } from '@mui/system'
 import React, { useState } from 'react'
 import { ShoppingBag } from '@mui/icons-material'
-import { Link } from 'react-router-dom'
 import { useSelector } from 'react-redux'
 import Order from './Order'
+import { auth0Client } from '../services/auth0'
 
 const navLinks = [
     {
@@ -123,15 +123,15 @@ const NavBar = () => {
                     }
                 }}
             >
-                <Link key={index} style={{textDecoration: 'none'}} to={item.path}>
-                    <Typography
-                        sx={{
-                            color: 'black'
-                        }}
-                    >
-                        {item.title}
-                    </Typography>
-                </Link>
+                <Typography
+                    onClick={() => auth0Client.signIn()}
+                    sx={{
+                        color: 'black',
+                        cursor: 'pointer'
+                    }}
+                >
+                    {item.title}
+                </Typography>
             </Box>
         ))}
     </Box>

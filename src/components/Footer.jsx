@@ -1,21 +1,16 @@
-import { Typography } from '@mui/material'
-import { Box } from '@mui/system'
 import React from 'react'
+import Typography from '@mui/material/Typography';
+import Link from '@mui/material/Link';
 
-const Footer = () => {
-  return (
-    <Box
-      component="footer"
-      sx={{
-        textAlign: 'center',
-        mt: '50px',
-      }}
-    >
-      <Typography>
-        Всі права захищені &copy;
-      </Typography>
-    </Box>
-  )
-}
+const Footer = () => (
+  <Typography variant="body2" color="text.secondary" align="center">
+      {'Copyright © '}
+      <Link color="inherit" href="https://mui.com/">
+        Your Website
+      </Link>{' '}
+      {new Date().getFullYear()}
+      {'.'}
+  </Typography>
+)
 
 export default Footer

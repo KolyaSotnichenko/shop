@@ -7,7 +7,7 @@
     "dev": "vite",
     "build": "vite build",
     "preview": "vite preview",
-    "server" : "node src/services/server.js"
+    "server": "node src/services/server.js"
   },
   "dependencies": {
     "@emotion/react": "^11.10.5",
@@ -15,10 +15,12 @@
     "@mui/icons-material": "^5.11.0",
     "@mui/material": "^5.11.8",
     "@reduxjs/toolkit": "^1.9.2",
+    "auth0": "^3.2.0",
+    "auth0-js": "^9.20.1",
     "cors": "^2.8.5",
     "express": "^4.18.2",
     "express-jwt": "^8.4.1",
-    "firebase": "^9.17.1",
+    "firebase": "8.2.3",
     "firebase-admin": "^11.5.0",
     "jwks-rsa": "^3.0.1",
     "react": "^18.2.0",
