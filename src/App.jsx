@@ -1,15 +1,15 @@
 import { Box } from "@mui/material"
-import { Container } from "@mui/system"
+// import { Container } from "@mui/system"
 import { useEffect, useState } from "react"
-import { Categories, Footer, Header, ProductList } from "./components"
+import { Categories, Footer, Header, Layout, ProductList } from "./components"
 import { getProducts } from "./services/api"
+import { useSelector } from "react-redux"
 
 
 function App() {
 
   const [products, setProducts] = useState([])
   const [currentProducts, setCurrentProducts] = useState(products)
-  const [orders, setOrders] = useState([])
 
   useEffect(() => {
     getProducts()
@@ -33,32 +33,15 @@ function App() {
     )
   }
 
-  const deleteOrder = (id) => {
-    setOrders(orders.filter(order => order.id !== id))
-  }
-
-  const addToOrders = (item) => {
-
-    let isInArray = false
-
-    orders.forEach(order => {
-      if(order.id === item.id) isInArray = true
-    })
-
-    if(!isInArray) setOrders([...orders, item])
-  }
-
   return (
-    <Container maxWidth="lg" sx={{margin: '50px auto'}}>
-      <Header orders={orders} onDelete={deleteOrder} />
+    <Layout>
       <Box
         component="main"
       >
         <Categories chooseCategory={chooseCategory} />
-        <ProductList products={currentProducts} addItem={addToOrders} />
+        <ProductList products={currentProducts} />
       </Box>
-      <Footer />
-    </Container>
+    </Layout>
   )
 }
 

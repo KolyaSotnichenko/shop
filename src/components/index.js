@@ -3,6 +3,7 @@ import Categories from './Categories'
 import Detail from './Detail'
 import Footer from './Footer'
 import Header from './Header'
+import Layout from './Layout'
 import NavBar from './NavBar'
 import Order from './Order'
 import ProductCard from './ProductCard'
@@ -16,6 +17,7 @@ export {
     Detail,
     Footer,
     Header,
+    Layout,
     NavBar,
     Order,
     ProductCard,

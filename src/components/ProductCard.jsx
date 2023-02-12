@@ -5,9 +5,16 @@ import Typography from '@mui/material/Typography';
 import { Button, CardActionArea, CardActions } from '@mui/material';
 import { Link } from 'react-router-dom';
 import { LazyLoadImage } from 'react-lazy-load-image-component';
+import { useDispatch } from 'react-redux';
+import { addOrder } from '../store/orderSlice';
 
-const ProductCard = ({item, addItem}) => {
+const ProductCard = ({item}) => {
 
+    const dispatch = useDispatch()
+
+    const addToOrders = (item) => {
+        dispatch(addOrder({item}))
+    }
 
     return (
         <Card sx={{ maxWidth: 250, flex: 1}}>
@@ -40,7 +47,7 @@ const ProductCard = ({item, addItem}) => {
                 </CardActionArea>
             </Link>
             <CardActions>
-                <Button size="medium" color="primary" onClick={() => addItem(item)}>
+                <Button size="medium" color="primary" onClick={() => addToOrders(item)}>
                     Купити
                 </Button>
             </CardActions>

@@ -6,8 +6,17 @@ import { Delete } from '@mui/icons-material'
 import { Box, CardActionArea, CardActions } from '@mui/material';
 import { Link } from 'react-router-dom';
 import { LazyLoadImage } from 'react-lazy-load-image-component';
+import { useDispatch } from 'react-redux';
+import { removeOrder } from '../store/orderSlice';
 
-const Order = ({item, onDelete}) => {
+const Order = ({item}) => {
+
+    const dispatch = useDispatch()
+
+    const handleAction = (id) => {
+        dispatch(removeOrder(id))
+    }
+
   return (
     <Card sx={{ maxWidth: '100%', display: 'flex', justifyContent: 'space-between', pl: '10px'}}>
             <Link style={{textDecoration: 'none', color: 'black'}} to={`/product/${item.id}`} state={item} >
@@ -43,7 +52,7 @@ const Order = ({item, onDelete}) => {
             </Link>
             <CardActions>
                 <Box
-                    onClick={() => onDelete(item.id)}
+                    onClick={() => handleAction(item.id)}
                 >
                     <Delete
                         sx={{

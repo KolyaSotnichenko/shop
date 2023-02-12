@@ -3,6 +3,7 @@ import { Box } from '@mui/system'
 import React, { useState } from 'react'
 import { ShoppingBag } from '@mui/icons-material'
 import { Link } from 'react-router-dom'
+import { useSelector } from 'react-redux'
 import Order from './Order'
 
 const navLinks = [
@@ -12,11 +13,14 @@ const navLinks = [
     }
 ]
 
-const NavBar = (props) => {
-
-    const { orders, onDelete } = props
+const NavBar = () => {
 
     const [cartOpen, setCartOpen] = useState(false)
+    const orders = useSelector(state => state.orders.orders)
+
+    let sum = 0
+
+    orders.forEach(order => sum += Number.parseFloat(order.price))
 
   return (
     <Box
@@ -83,7 +87,7 @@ const NavBar = (props) => {
                     }}
                 >
                     {orders.length > 0 ? orders.map(item => (
-                        <Order key={item.id} item={item} onDelete={onDelete}/>
+                        <Order key={item.id} item={item}/>
                     )): (
                         <Typography
                             sx={{
@@ -93,6 +97,15 @@ const NavBar = (props) => {
                             Корзина порожня
                         </Typography>
                     )}
+                    <Box
+                        sx={{
+                            float: 'right'
+                        }}
+                    >
+                        <Typography>
+                            {`Сума: ${sum}$`}
+                        </Typography>
+                    </Box>
                 </Paper>
             )}
         </Box>
