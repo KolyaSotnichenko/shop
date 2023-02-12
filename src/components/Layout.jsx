@@ -3,12 +3,12 @@ import Header from './Header'
 import Footer from './Footer'
 import { Container } from '@mui/system'
 
-const Layout = ({children}) => {
+const Layout = ({ children }) => {
   return (
-    <Container maxWidth="lg" sx={{margin: '20px auto'}}>
-        <Header/>
-        {children}
-        <Footer />
+    <Container maxWidth="lg" sx={{ margin: '20px auto' }}>
+      <Header />
+      {children}
+      <Footer />
     </Container>
   )
 }

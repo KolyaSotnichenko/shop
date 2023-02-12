@@ -1,5 +1,5 @@
 import { Box, Button, Typography } from '@mui/material'
-import React, { useState } from 'react'
+import React from 'react'
 import { auth0Client } from '../services/auth0'
 import { firebaseClient } from '../services/firebase/firebase'
 import Layout from './Layout'
@@ -7,9 +7,9 @@ import Layout from './Layout'
 const Cabinet = () => {
 
   (async () => {
-  
+
     const loggedInThroughCallback = await auth0Client.handleCallback();
-    if(loggedInThroughCallback) {
+    if (loggedInThroughCallback) {
       console.log(auth0Client.getIdToken())
       const response = await fetch('http://localhost:3001/firebase', {
         headers: {
@@ -33,7 +33,7 @@ const Cabinet = () => {
         <Typography>
           test@yopmail.com
         </Typography>
-        <Button 
+        <Button
           onClick={() => {
             auth0Client.signOut()
           }}>

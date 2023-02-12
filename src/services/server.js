@@ -1,6 +1,6 @@
 const express = require('express');
 const cors = require('cors');
-var   { expressjwt: jwt } = require('express-jwt');
+var { expressjwt: jwt } = require('express-jwt');
 const jwks = require('jwks-rsa');
 const firebaseAdmin = require('firebase-admin');
 const path = require('path');
@@ -36,7 +36,7 @@ app.get('/firebase', jwtCheck, async (req, res) => {
 
   try {
     const firebaseToken = await firebaseAdmin.auth().createCustomToken(uid);
-    res.json({firebaseToken});
+    res.json({ firebaseToken });
   } catch (err) {
     res.status(500).send({
       message: 'Something went wrong acquiring a Firebase token.',

@@ -19,15 +19,15 @@ const Order = (props) => {
         dispatch(removeOrder(id))
     }
 
-  return (
-    <Card sx={{ maxWidth: '100%', display: 'flex', justifyContent: 'space-between', pl: '10px'}}>
-            <Link style={{textDecoration: 'none', color: 'black'}} to={`/product/${item.id}`} state={item} >
+    return (
+        <Card sx={{ maxWidth: '100%', display: 'flex', justifyContent: 'space-between', pl: '10px' }}>
+            <Link style={{ textDecoration: 'none', color: 'black' }} to={`/product/${item.id}`} state={item} >
                 <CardActionArea
                     sx={{
                         display: 'flex',
                     }}
                 >
-                    <LazyLoadImage 
+                    <LazyLoadImage
                         src={item.image}
                         height='50px'
                         effect={blur}
@@ -37,8 +37,8 @@ const Order = (props) => {
                         alt="green iguana"
                     />
                     <CardContent>
-                        <Typography 
-                            gutterBottom 
+                        <Typography
+                            gutterBottom
                             variant="h5"
                             sx={{
                                 fontSize: '16px'
@@ -46,8 +46,8 @@ const Order = (props) => {
                         >
                             {item.name}
                         </Typography>
-                        <Typography 
-                            gutterBottom 
+                        <Typography
+                            gutterBottom
                             variant="h6"
                             sx={{
                                 fontSize: '12px'
@@ -76,7 +76,7 @@ const Order = (props) => {
                 </Box>
             </CardActions>
         </Card>
-  )
+    )
 }
 
 export default Order

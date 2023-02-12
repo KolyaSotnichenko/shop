@@ -1,9 +1,9 @@
 import { Box } from "@mui/material"
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import { useEffect, useState } from "react"
 import { Banner, Categories, Filter, Layout, ProductList } from "./components"
 import { getProducts } from "./services/api"
-import { firebaseClient } from "./services/firebase/firebase"
-import { auth0Client }  from "./services/auth0"
 
 
 function App() {
@@ -13,16 +13,16 @@ function App() {
 
   useEffect(() => {
     getProducts()
-        .then(data => {
-            setProducts(data)
-        })
-    
+      .then(data => {
+        setProducts(data)
+      })
+
     setCurrentProducts(products)
   }, [products])
 
   const chooseCategory = (category) => {
 
-    if(category === 'all'){
+    if (category === 'all') {
       return setCurrentProducts(products)
     }
 
@@ -32,20 +32,20 @@ function App() {
   }
 
   const chooseFilter = (filter) => {
-    if(filter === 'all'){
+    if (filter === 'all') {
       return setCurrentProducts(products)
     }
-    if(filter === 'fromSmallerToLager'){
+    if (filter === 'fromSmallerToLager') {
       setCurrentProducts(
         [...currentProducts].sort((a, b) => parseFloat(a.price) - parseFloat(b.price))
       )
     }
-    if(filter === 'fromLagerToSmaller'){
+    if (filter === 'fromLagerToSmaller') {
       setCurrentProducts(
         [...currentProducts].sort((a, b) => parseFloat(b.price) - parseFloat(a.price))
       )
     }
-    if(filter === 'popular'){
+    if (filter === 'popular') {
       setCurrentProducts(
         currentProducts.filter(obj => obj.popularity >= 500)
       )
@@ -70,6 +70,18 @@ function App() {
         </Box>
         <ProductList products={currentProducts} />
       </Box>
+      <ToastContainer
+        position="top-right"
+        autoClose={5000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="light"
+      />
     </Layout>
   )
 }

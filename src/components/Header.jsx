@@ -3,7 +3,7 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 import NavBar from './NavBar'
 
-const Header = () => { 
+const Header = () => {
 
   return (
     <Box
@@ -22,7 +22,7 @@ const Header = () => {
         }}
       >
         <Link to="/">
-          <Box 
+          <Box
             component="span"
             sx={{
               fontWeight: 600,
@@ -30,7 +30,7 @@ const Header = () => {
             }}
           >Test Shop</Box>
         </Link>
-        <NavBar/>
+        <NavBar />
       </Box>
     </Box>
   )

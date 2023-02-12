@@ -22,120 +22,120 @@ const NavBar = () => {
 
     orders.forEach(order => sum += Number.parseFloat(order.price))
 
-  return (
-    <Box
-        component="ul"
-        sx={{
-            display: 'flex',
-            alignItems: 'center'
-        }}
-    >
+    return (
         <Box
-            component='li'
+            component="ul"
             sx={{
-                listStyle: 'none',
-                position: 'relative'
+                display: 'flex',
+                alignItems: 'center'
             }}
-            onClick={() => setCartOpen(!cartOpen)}
         >
-            <ShoppingBag
+            <Box
+                component='li'
                 sx={{
-                    transition: 'all 0.2s ease-in-out',
-                    cursor: 'pointer',
-                    color: cartOpen && 'lightgray',
-                    transform: cartOpen && 'scale(1.3)',
-                    '&:hover': {
-                        color: 'lightgray',
-                        transform: 'scale(1.3)'
-                    },
+                    listStyle: 'none',
+                    position: 'relative'
                 }}
-            />
-
-            {orders.length > 0 && (
-                <Box
+                onClick={() => setCartOpen(!cartOpen)}
+            >
+                <ShoppingBag
                     sx={{
-                        width: '15px',
-                        height: '15px',
-                        bgcolor: 'red',
-                        position: 'absolute',
-                        top: '10px',
-                        right: 0,
-                        borderRadius: '50%',
-                        textAlign: 'center',
-                        cursor: 'pointer'
+                        transition: 'all 0.2s ease-in-out',
+                        cursor: 'pointer',
+                        color: cartOpen && 'lightgray',
+                        transform: cartOpen && 'scale(1.3)',
+                        '&:hover': {
+                            color: 'lightgray',
+                            transform: 'scale(1.3)'
+                        },
+                    }}
+                />
+
+                {orders.length > 0 && (
+                    <Box
+                        sx={{
+                            width: '15px',
+                            height: '15px',
+                            bgcolor: 'red',
+                            position: 'absolute',
+                            top: '10px',
+                            right: 0,
+                            borderRadius: '50%',
+                            textAlign: 'center',
+                            cursor: 'pointer'
+                        }}
+                    >
+                        <Typography
+                            sx={{
+                                color: 'white',
+                                fontSize: '10px'
+                            }}
+                        >
+                            {orders.length}
+                        </Typography>
+                    </Box>
+                )}
+
+                {cartOpen && (
+                    <Paper
+                        sx={{
+                            position: 'absolute',
+                            top: '30px',
+                            right: 0,
+                            width: '300px'
+
+                        }}
+                    >
+                        {orders.length > 0 ? orders.map(item => (
+                            <Order key={item.id} item={item} />
+                        )) : (
+                            <Typography
+                                sx={{
+                                    textAlign: 'center'
+                                }}
+                            >
+                                Корзина порожня
+                            </Typography>
+                        )}
+                        <Box
+                            sx={{
+                                float: 'right'
+                            }}
+                        >
+                            <Typography>
+                                {`Сума: ${sum}$`}
+                            </Typography>
+                        </Box>
+                    </Paper>
+                )}
+            </Box>
+            {navLinks.map((item, index) => (
+                <Box
+                    component="li"
+                    key={index}
+                    sx={{
+                        listStyle: 'none',
+                        ml: '25px',
+                        transition: 'all 0.2s ease-in-out',
+                        '&:hover': {
+                            opacity: '0.5',
+                            transform: 'scale(1.3)'
+                        }
                     }}
                 >
                     <Typography
+                        onClick={() => auth0Client.signIn()}
                         sx={{
-                            color: 'white',
-                            fontSize: '10px'
+                            color: 'black',
+                            cursor: 'pointer'
                         }}
                     >
-                        {orders.length}
+                        {item.title}
                     </Typography>
                 </Box>
-            )}
-
-            {cartOpen && (
-                <Paper
-                    sx={{
-                        position: 'absolute',
-                        top: '30px',
-                        right: 0,
-                        width: '300px'
-                        
-                    }}
-                >
-                    {orders.length > 0 ? orders.map(item => (
-                        <Order key={item.id} item={item}/>
-                    )): (
-                        <Typography
-                            sx={{
-                                textAlign: 'center'
-                            }}
-                        >
-                            Корзина порожня
-                        </Typography>
-                    )}
-                    <Box
-                        sx={{
-                            float: 'right'
-                        }}
-                    >
-                        <Typography>
-                            {`Сума: ${sum}$`}
-                        </Typography>
-                    </Box>
-                </Paper>
-            )}
+            ))}
         </Box>
-        {navLinks.map((item, index) => (
-            <Box
-                component="li"
-                key={index}
-                sx={{
-                    listStyle: 'none',
-                    ml: '25px',
-                    transition: 'all 0.2s ease-in-out',
-                    '&:hover': {
-                        opacity: '0.5',
-                        transform:'scale(1.3)'
-                    }
-                }}
-            >
-                <Typography
-                    onClick={() => auth0Client.signIn()}
-                    sx={{
-                        color: 'black',
-                        cursor: 'pointer'
-                    }}
-                >
-                    {item.title}
-                </Typography>
-            </Box>
-        ))}
-    </Box>
-  )
+    )
 }
 
 export default NavBar

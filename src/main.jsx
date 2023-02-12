@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 import ReactDOM from 'react-dom/client'
 import App from './App'
 import './index.css'
@@ -8,7 +8,7 @@ import {
 } from "react-router-dom";
 import { Detail, Cabinet } from './components';
 import { Provider } from 'react-redux';
-import store, {persistor} from './store';
+import store, { persistor } from './store';
 import { PersistGate } from 'redux-persist/integration/react';
 
 const router = createBrowserRouter([
