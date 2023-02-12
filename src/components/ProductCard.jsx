@@ -48,13 +48,7 @@ const ProductCard = ({item}) => {
                 </CardActionArea>
             </Link>
             <CardActions>
-                <Button size="medium" color="primary" onClick={() => {
-                    if(auth0Client.getProfile()){
-                        return addToOrders(item)
-                    }else{
-                        console.log("Not Auth")
-                    }
-                }}>
+                <Button size="medium" color="primary" onClick={() => addToOrders(item)}>
                     Купити
                 </Button>
             </CardActions>

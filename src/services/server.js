@@ -4,10 +4,11 @@ var   { expressjwt: jwt } = require('express-jwt');
 const jwks = require('jwks-rsa');
 const firebaseAdmin = require('firebase-admin');
 const path = require('path');
+require('dotenv').config()
 
 const app = express();
 app.use(cors());
-app.use('/', express.static(path.join(__dirname, 'src')));
+app.use('/', express.static(path.join(__dirname, 'shop')));
 
 const jwtCheck = jwt({
   secret: jwks.expressJwtSecret({
@@ -25,11 +26,13 @@ const serviceAccount = require('./firebase/firebase-key.json');
 
 firebaseAdmin.initializeApp({
   credential: firebaseAdmin.credential.cert(serviceAccount),
-  databaseURL: `https://${serviceAccount.project_id}.firebaseio.com`
+  databaseURL: `"https://shop-9cd65-default-rtdb.firebaseio.com"`
 });
 
 app.get('/firebase', jwtCheck, async (req, res) => {
-  const {sub: uid} = req.user;
+  const uid = req.user.sub;
+
+  console.log(uid)
 
   try {
     const firebaseToken = await firebaseAdmin.auth().createCustomToken(uid);

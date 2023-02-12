@@ -6,9 +6,9 @@ class Auth0Client {
   constructor() {
     _auth0Client = new auth0.WebAuth({
       domain: 'dev-sdkioo3idqauf0m7.us.auth0.com',
-      audience: 'https://dev-sdkioo3idqauf0m7.us.auth0.com/api/v2/',
+      audience: 'https://dev-sdkioo3idqauf0m7.us.auth0.com/userinfo',
       clientID: 'nZDMgalW1UhK98Jnx1gumDYt9JmNFiDQ',
-      redirectUri: 'http://127.0.0.1:5173/cabinet',
+      redirectUri: 'http://127.0.0.1:5173/cabinet/',
       responseType: 'token id_token',
       scope: 'openid profile'
     });
@@ -29,11 +29,12 @@ class Auth0Client {
         if (err) return reject(err);
 
         if (!authResult || !authResult.idToken) {
-          // not an authentication request
           return resolve(false);
         }
         _idToken = authResult.idToken;
         _profile = authResult.idTokenPayload;
+
+        localStorage.setItem('token', _idToken)
 
         return resolve(true);
       });
@@ -47,6 +48,7 @@ class Auth0Client {
   signOut() {
     _idToken = null;
     _profile = null;
+    localStorage.removeItem('token')
   }
 }
 

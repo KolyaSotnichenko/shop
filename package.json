@@ -17,6 +17,7 @@
     "@reduxjs/toolkit": "^1.9.2",
     "auth0": "^3.2.0",
     "auth0-js": "^9.20.1",
+    "auth0-lock": "^12.0.2",
     "cors": "^2.8.5",
     "express": "^4.18.2",
     "express-jwt": "^8.4.1",
