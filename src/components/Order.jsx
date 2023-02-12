@@ -38,12 +38,18 @@ const Order = ({item}) => {
                         <Typography 
                             gutterBottom 
                             variant="h5"
+                            sx={{
+                                fontSize: '16px'
+                            }}
                         >
                             {item.name}
                         </Typography>
                         <Typography 
                             gutterBottom 
                             variant="h6"
+                            sx={{
+                                fontSize: '12px'
+                            }}
                         >
                             {`${item.price}$`}
                         </Typography>

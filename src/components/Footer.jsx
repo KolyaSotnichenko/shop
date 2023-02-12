@@ -8,7 +8,7 @@ const Footer = () => {
       component="footer"
       sx={{
         textAlign: 'center',
-        mt: '20px',
+        mt: '50px',
       }}
     >
       <Typography>
