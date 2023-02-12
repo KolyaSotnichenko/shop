@@ -5,7 +5,7 @@ import { Container } from '@mui/system'
 
 const Layout = ({children}) => {
   return (
-    <Container maxWidth="lg" sx={{margin: '50px auto'}}>
+    <Container maxWidth="lg" sx={{margin: '20px auto'}}>
         <Header/>
         {children}
         <Footer />

@@ -1,9 +1,7 @@
 import { Box } from "@mui/material"
-// import { Container } from "@mui/system"
 import { useEffect, useState } from "react"
-import { Categories, Footer, Header, Layout, ProductList } from "./components"
+import { Banner, Categories, Layout, ProductList } from "./components"
 import { getProducts } from "./services/api"
-import { useSelector } from "react-redux"
 
 
 function App() {
@@ -38,6 +36,7 @@ function App() {
       <Box
         component="main"
       >
+        <Banner />
         <Categories chooseCategory={chooseCategory} />
         <ProductList products={currentProducts} />
       </Box>

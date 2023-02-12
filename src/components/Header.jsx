@@ -1,7 +1,5 @@
 import { Box } from '@mui/system'
 import React from 'react'
-import { LazyLoadImage } from 'react-lazy-load-image-component'
-import bannerImg from '/assets/banner.jpg'
 import NavBar from './NavBar'
 
 const Header = () => { 
@@ -10,7 +8,8 @@ const Header = () => {
     <Box
       component='header'
       sx={{
-        position: 'relative'
+        position: 'relative',
+        mb: '50px'
       }}
     >
       <Box
@@ -29,22 +28,6 @@ const Header = () => {
           }}
         >Test Shop</Box>
         <NavBar/>
-      </Box>
-      <Box
-        sx={{
-          margin: '50px 0',
-          width: '100%',
-          height: '500px',
-        }}
-      >
-        <LazyLoadImage 
-          src={bannerImg}
-          style={{
-            width: '100%',
-          }}
-          effect={blur}
-          alt="Banner image"
-        />
       </Box>
     </Box>
   )

@@ -1,3 +1,4 @@
+import Banner from './Banner'
 import Cabinet from './Cabinet'
 import Categories from './Categories'
 import Detail from './Detail'
@@ -12,6 +13,7 @@ import SignIn from './SignIn'
 import SignUp from './SignUp'
 
 export {
+    Banner,
     Cabinet,
     Categories,
     Detail,

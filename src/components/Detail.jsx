@@ -1,7 +1,8 @@
 import { Button, Typography } from '@mui/material'
-import { Container, Box } from '@mui/system'
+import { Box } from '@mui/system'
 import { LazyLoadImage } from 'react-lazy-load-image-component'
 import { useLocation } from 'react-router-dom'
+import Layout from './Layout'
 
 const Detail = () => {
 
@@ -9,7 +10,7 @@ const Detail = () => {
     const item = location.state
 
   return (
-    <Container maxWidth="md" sx={{paddingTop: '50px'}}>
+    <Layout>
         <Box
             sx={{
                 display: 'flex',
@@ -80,7 +81,7 @@ const Detail = () => {
             </Box>
           </Box>
         </Box>
-    </Container>
+    </Layout>
   )
 }
 
