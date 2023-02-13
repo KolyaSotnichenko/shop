@@ -1,4 +1,3 @@
-const functions = require('firebase-functions')
 const express = require('express');
 const cors = require('cors');
 var { expressjwt: jwt } = require('express-jwt');
@@ -10,7 +9,6 @@ require('dotenv').config()
 const app = express();
 app.use(cors());
 
-//local start
 app.use(express.static(path.join(__dirname, '../client/dist')))
 
 app.get('*', (req, res) => {                       
