@@ -1,3 +1,4 @@
+const functions = require('firebase-functions')
 const express = require('express');
 const cors = require('cors');
 var { expressjwt: jwt } = require('express-jwt');
@@ -50,4 +51,8 @@ app.get('/firebase', jwtCheck, async (req, res) => {
   }
 });
 
-app.listen(3001, () => console.log('Server running on localhost:3001'));
+// app.listen(3001, () => console.log('Server running on localhost:3001'));
+
+// exports.app = functions.https.onRequest(app)
+
+module.exports = app;
