@@ -8,7 +8,7 @@ class Auth0Client {
       domain: 'dev-sdkioo3idqauf0m7.us.auth0.com',
       audience: 'https://dev-sdkioo3idqauf0m7.us.auth0.com/userinfo',
       clientID: 'nZDMgalW1UhK98Jnx1gumDYt9JmNFiDQ',
-      redirectUri: 'https://shop-azure-ten.vercel.app:3001/cabinet',
+      redirectUri: 'https://shop-azure-ten.vercel.app/cabinet',
       responseType: 'token id_token',
       scope: 'openid profile'
     });
