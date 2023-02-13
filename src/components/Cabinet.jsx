@@ -17,7 +17,7 @@ const Cabinet = () => {
     if (loggedInThroughCallback) {
       console.log(auth0Client.getIdToken())
       setUser(auth0Client.getProfile())
-      const response = await fetch('http://localhost:3001/firebase', {
+      const response = await fetch('https://shop-9cd65.web.app/firebase', {
         headers: {
           'Authorization': 'Bearer ' + auth0Client.getIdToken()
         },
