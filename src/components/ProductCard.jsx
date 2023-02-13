@@ -62,15 +62,10 @@ const ProductCard = ({ item }) => {
                     </CardContent>
                 </CardActionArea>
             </Link>
-            {/* <CardActions>
-                <Button size="medium" color="primary" onClick={() => addToOrders(item)}>
-                    Купити
-                </Button>
-            </CardActions> */}
             <CardActions>
                 <Button size="medium" color="primary" onClick={() => {
-                    if (user) {
-                        addToOrders(item)
+                    if (localStorage.getItem('token')) {
+                        return addToOrders(item)
                     }
                     toast.error(<Typography
                         onClick={() => auth0Client.signIn()}

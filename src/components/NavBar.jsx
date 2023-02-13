@@ -18,6 +18,10 @@ const NavBar = () => {
     const [cartOpen, setCartOpen] = useState(false)
     const orders = useSelector(state => state.orders.orders)
 
+    const handleClick = () => {
+        return auth0Client.signIn()
+    }
+
     let sum = 0
 
     orders.forEach(order => sum += Number.parseFloat(order.price))
@@ -124,7 +128,7 @@ const NavBar = () => {
                     }}
                 >
                     <Typography
-                        onClick={() => auth0Client.signIn()}
+                        onClick={handleClick}
                         sx={{
                             color: 'black',
                             cursor: 'pointer'

@@ -8,7 +8,12 @@ require('dotenv').config()
 
 const app = express();
 app.use(cors());
-app.use('/', express.static(path.join(__dirname, 'shop')));
+// app.use('/', express.static(path.join(__dirname, '../../dist/')));
+app.use(express.static(path.join(__dirname, '../../dist')))
+
+app.get('*', (req, res) => {                       
+  res.sendFile(path.resolve(__dirname, '../../dist', 'index.html'));                               
+});
 
 const jwtCheck = jwt({
   secret: jwks.expressJwtSecret({
@@ -26,17 +31,17 @@ const serviceAccount = require('./firebase/firebase-key.json');
 
 firebaseAdmin.initializeApp({
   credential: firebaseAdmin.credential.cert(serviceAccount),
-  databaseURL: `"https://shop-9cd65-default-rtdb.firebaseio.com"`
+  databaseURL: `https://${serviceAccount.project_id}.firebaseio.com`
 });
 
 app.get('/firebase', jwtCheck, async (req, res) => {
-  const uid = req.user.sub;
-
-  console.log(uid)
+  const {sub: uid} = req.user;
 
   try {
-    const firebaseToken = await firebaseAdmin.auth().createCustomToken(uid);
-    res.json({ firebaseToken });
+    await firebaseAdmin.auth().createCustomToken(uid)
+      .then(customToken => {
+        res.json({ firebaseToken: customToken })
+      })
   } catch (err) {
     res.status(500).send({
       message: 'Something went wrong acquiring a Firebase token.',

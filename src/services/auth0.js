@@ -8,7 +8,7 @@ class Auth0Client {
       domain: 'dev-sdkioo3idqauf0m7.us.auth0.com',
       audience: 'https://dev-sdkioo3idqauf0m7.us.auth0.com/userinfo',
       clientID: 'nZDMgalW1UhK98Jnx1gumDYt9JmNFiDQ',
-      redirectUri: 'http://127.0.0.1:5173/cabinet/',
+      redirectUri: 'http://localhost:3001/cabinet',
       responseType: 'token id_token',
       scope: 'openid profile'
     });
@@ -49,6 +49,7 @@ class Auth0Client {
     _idToken = null;
     _profile = null;
     localStorage.removeItem('token')
+    _auth0Client.logout()
   }
 }
 
