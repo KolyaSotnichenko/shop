@@ -9,12 +9,15 @@ require('dotenv').config()
 
 const app = express();
 app.use(cors());
-// app.use('/', express.static(path.join(__dirname, '../../dist/')));
-app.use(express.static(path.join(__dirname, '../client/dist')))
 
-app.get('*', (req, res) => {                       
-  res.sendFile(path.resolve(__dirname, 'dist', 'index.html'));                               
-});
+//local start
+// app.use(express.static(path.join(__dirname, '../client/dist')))
+
+// app.get('*', (req, res) => {                       
+//   res.sendFile(path.resolve(__dirname, 'dist', 'index.html'));                               
+// });
+
+
 
 const jwtCheck = jwt({
   secret: jwks.expressJwtSecret({
@@ -52,7 +55,5 @@ app.get('/firebase', jwtCheck, async (req, res) => {
 });
 
 app.listen(process.env.PORT || 3000);
-
-// exports.app = functions.https.onRequest(app)
 
 module.exports = app;
