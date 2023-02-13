@@ -10,10 +10,10 @@ require('dotenv').config()
 const app = express();
 app.use(cors());
 // app.use('/', express.static(path.join(__dirname, '../../dist/')));
-app.use(express.static(path.join(__dirname, './client/dist')))
+app.use(express.static(path.join(__dirname, '../client/dist')))
 
 app.get('*', (req, res) => {                       
-  res.sendFile(path.resolve(__dirname, 'dist'));                               
+  res.sendFile(path.resolve(__dirname, 'dist', 'index.html'));                               
 });
 
 const jwtCheck = jwt({
@@ -28,7 +28,7 @@ const jwtCheck = jwt({
   algorithms: ['RS256']
 });
 
-const serviceAccount = require('./client/src/services/firebase/firebase-key.json');
+const serviceAccount = require('../client/src/services/firebase/firebase-key.json');
 
 firebaseAdmin.initializeApp({
   credential: firebaseAdmin.credential.cert(serviceAccount),
