@@ -17,7 +17,7 @@ const Cabinet = () => {
     if (loggedInThroughCallback) {
       console.log(auth0Client.getIdToken())
       setUser(auth0Client.getProfile())
-      const response = await fetch('https://shop-9cd65.web.app/firebase', {
+      const response = await fetch('https://shop-two-lovat.vercel.app/firebase', {
         headers: {
           'Authorization': 'Bearer ' + auth0Client.getIdToken()
         },
