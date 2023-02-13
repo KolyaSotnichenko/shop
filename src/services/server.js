@@ -51,7 +51,7 @@ app.get('/firebase', jwtCheck, async (req, res) => {
   }
 });
 
-// app.listen(3001, () => console.log('Server running on localhost:3001'));
+app.listen(process.env.PORT || 3000);
 
 // exports.app = functions.https.onRequest(app)
 
