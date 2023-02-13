@@ -52,6 +52,6 @@ app.get('/firebase', jwtCheck, async (req, res) => {
   }
 });
 
-app.listen(process.env.PORT || 3000);
+app.listen(3001);
 
 module.exports = app;
