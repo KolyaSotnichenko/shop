@@ -63,7 +63,7 @@ const ProductCard = ({ item }) => {
                 </CardActionArea>
             </Link>
             <CardActions>
-                <Button size="medium" color="primary" onClick={() => {
+                {/* <Button size="medium" color="primary" onClick={() => {
                     if (localStorage.getItem('token')) {
                         return addToOrders(item)
                     }
@@ -73,6 +73,15 @@ const ProductCard = ({ item }) => {
                         Щоб додати товар в корзину, Вам потрібно <Box component="span" sx={{ color: 'blue' }}>зареєструватись!</Box>
                     </Typography>);
                 }}>
+                    Додати до корзини
+                </Button> */}
+                <Button
+                    size='medium'
+                    color='primary'
+                    onClick={() => {
+                        addToOrders(item)
+                    }}
+                >
                     Додати до корзини
                 </Button>
             </CardActions>
